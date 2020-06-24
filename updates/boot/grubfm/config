@@ -1,0 +1,6 @@
+search --set=diycore -f -q /boot/grubfm/diy.gz;
+loopback -m diy ($diycore)/boot/grubfm/diy.gz;
+configfile (diy)/diy
+
+
+
