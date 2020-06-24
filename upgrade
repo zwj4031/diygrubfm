@@ -17,5 +17,5 @@ cp (upgrade)/boot/grubfm/sys.ini 2:/boot/grubfm/sys.ini
 cp (upgrade)/boot/grubfm/fmldr 2:/boot/grubfm/fmldr
 cp (upgrade)/boot/grubfm/ver 2:/boot/grubfm/ver
 umount 2
-load_env -f ($diycore)/boot/grubfm/diy.cfg
+load_env -f ($diycore)/boot/grubfm/ver
 echo 升级完成…… 当前版本:$diyver
