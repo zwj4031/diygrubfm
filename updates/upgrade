@@ -1,22 +1,54 @@
+load_env -f ($updisk)/boot/grubfm/ver
+echo 程序版本:$diyver
+echo 更新日志:$verlog
 echo 搜索DIY核心所在分区..
 search --set=diycore -f -q /boot/grubfm/diy.gz;
-echo 完成.
-echo 搜索升级包所在分区...
-search --set=upgrade -f -q /updates.gz;
-echo 完成.
-echo 挂载升级包..
-loopback -d upgrade
-loopback upgrade ($upgrade)/updates.gz
 echo 完成.
 echo 挂载EFI分区..
 mount ($diycore) 2
 echo 完成挂载,正在升级....
-cp (upgrade)/boot/grubfm/config 2:/boot/grubfm/config
-cp (upgrade)/boot/grubfm/diy.gz 2:/boot/grubfm/diy.gz
-#cp (upgrade)/boot/grubfm/diy.cfg 2:/boot/grubfm/diy.cfg
-cp (upgrade)/boot/grubfm/sys.ini 2:/boot/grubfm/sys.ini
-cp (upgrade)/boot/grubfm/fmldr 2:/boot/grubfm/fmldr
-cp (upgrade)/boot/grubfm/ver 2:/boot/grubfm/ver
+cp ($updisk)/boot/grubfm/config 2:/boot/grubfm/config
+cp ($updisk)/boot/grubfm/diy.gz 2:/boot/grubfm/diy.gz
+#cp ($updisk)/boot/grubfm/diy.cfg 2:/boot/grubfm/diy.cfg
+cp ($updisk)/boot/grubfm/sys.ini 2:/boot/grubfm/sys.ini
+cp ($updisk)/boot/grubfm/fmldr 2:/boot/grubfm/fmldr
+cp ($updisk)/boot/grubfm/ver 2:/boot/grubfm/ver
 umount 2
 load_env -f ($diycore)/boot/grubfm/ver
 echo 升级完成…… 当前版本:$diyver
+export grub_frame_speed=110
+
+
+function load_gfx {
+#  loadfont ${prefix}/fonts/unicode.xz;
+#  loadfont ${prefix}/fonts/dosvga.pf2;
+  export grub_disable_esc="1";
+  export gfxmode=1024x768;
+  export gfxpayload=keep;
+  terminal_output gfxterm;
+  export theme=($updisk)/themes/upgrade/splash10.txt;
+ set timeout=6;
+}
+
+}
+	 
+function biosmenu {
+menuentry "upgrade" {
+configfile ($user)/boot/grubfm/config;
+}
+}
+
+function efimenu {
+menuentry "upgrade" {
+configfile ($user)/boot/grubfm/config;
+}
+}
+
+
+if [ "$grub_platform" = "efi" ]; then
+load_gfx;
+efimenu;
+else 
+load_gfx;
+biosmenu;
+ fi;
