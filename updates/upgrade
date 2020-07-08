@@ -7,11 +7,13 @@ echo 完成.
 echo 挂载EFI分区..
 mount ($diycore) 2
 echo 完成挂载,正在升级....
-cp ($updisk)/boot/grubfm/config 2:/boot/grubfm/config
-cp ($updisk)/boot/grubfm/diy.gz 2:/boot/grubfm/diy.gz
+#cp ($updisk)/boot/grubfm/config 2:/boot/grubfm/config
+#cp ($updisk)/boot/grubfm/diy.gz 2:/boot/grubfm/diy.gz
 #cp ($updisk)/boot/grubfm/diy.cfg 2:/boot/grubfm/diy.cfg
-cp ($updisk)/boot/grubfm/sys.ini 2:/boot/grubfm/sys.ini
-cp ($updisk)/boot/grubfm/fmldr 2:/boot/grubfm/fmldr
+#cp ($updisk)/boot/grubfm/sys.ini 2:/boot/grubfm/sys.ini
+#cp ($updisk)/boot/grubfm/fmldr 2:/boot/grubfm/fmldr
+cp ($updisk)/boot/grubfm/grubfm.iso 2:/boot/grubfm/grubfm.iso
+cp ($updisk)/boot/grubfm/grubfmx64.efi 2:/boot/grubfm/grubfmx64.efi
 cp ($updisk)/boot/grubfm/ver 2:/boot/grubfm/ver
 umount 2
 load_env -f ($diycore)/boot/grubfm/ver
