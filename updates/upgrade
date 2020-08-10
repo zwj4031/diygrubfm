@@ -36,12 +36,14 @@ function load_gfx {
 	 
 function biosmenu {
 menuentry "upgrade" {
+unset grub_frame_speed;
 configfile ($user)/boot/grubfm/config;
 }
 }
 
 function efimenu {
 menuentry "upgrade" {
+unset grub_frame_speed;
 configfile ($user)/boot/grubfm/config;
 }
 }
