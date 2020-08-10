@@ -15,38 +15,39 @@ echo 完成挂载,正在升级....
 #cp ($updisk)/boot/grubfm/grubfm.iso 2:/boot/grubfm/grubfm.iso
 #cp ($updisk)/boot/grubfm/grubfmx64.efi 2:/boot/grubfm/grubfmx64.efi
 #cp ($updisk)/boot/grubfm/ver 2:/boot/grubfm/ver
+search --set=ver -f -q /boot/grubfm/ver;
 
-if cmp ($updisk)/boot/grubfm/config 2:/boot/grubfm/config
+if cmp ($updisk)/boot/grubfm/config (${ver})/boot/grubfm/config
   then
   echo -n "正在更新config配置文件...";
   cp ($updisk)/boot/grubfm/config 2:/boot/grubfm/config
 fi;  
 
-if cmp ($updisk)/boot/grubfm/diy.gz 2:/boot/grubfm/diy.gz
+if cmp ($updisk)/boot/grubfm/diy.gz (${ver})/boot/grubfm/diy.gz
   then
   echo -n "正在更新diy核心文件...";
   cp ($updisk)/boot/grubfm/diy.gz 2:/boot/grubfm/diy.gz
 fi;  
 
-if cmp ($updisk)/boot/grubfm/grubfm.iso 2:/boot/grubfm/grubfm.iso
+if cmp ($updisk)/boot/grubfm/grubfm.iso (${ver})/boot/grubfm/grubfm.iso
   then
   echo -n "正在更新grubfm[bios]核心文件...";
 cp ($updisk)/boot/grubfm/grubfm.iso 2:/boot/grubfm/grubfm.iso
 fi;  
     
-if cmp ($updisk)/boot/grubfm/grubfmx64.efi 2:/boot/grubfm/grubfmx64.efi
+if cmp ($updisk)/boot/grubfm/grubfmx64.efi (${ver})/boot/grubfm/grubfmx64.efi
   then
   echo -n "正在更新grubfm[bios]核心文件...";
 cp ($updisk)/boot/grubfm/grubfmx64.efi 2:/boot/grubfm/grubfmx64.efi
 fi;  
     	 
-if cmp ($updisk)/boot/grubfm/sys.ini 2:/boot/grubfm/sys.ini
+if cmp ($updisk)/boot/grubfm/sys.ini (${ver})/boot/grubfm/sys.ini
   then
   echo -n "正在更新系统内置菜单...";
  cp ($updisk)/boot/grubfm/sys.ini 2:/boot/grubfm/sys.ini
 fi;  
 
-if cmp ($updisk)/boot/grubfm/fmldr 2:/boot/grubfm/fmldr
+if cmp ($updisk)/boot/grubfm/fmldr (${ver})/boot/grubfm/fmldr
   then
   echo -n "正在更新引导文件...";
 cp ($updisk)/boot/grubfm/fmldr 2:/boot/grubfm/fmldr
