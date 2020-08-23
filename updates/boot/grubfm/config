@@ -1,6 +1,7 @@
 unset grub_frame_speed;
 search --set=diycore -f -q /boot/grubfm/diy.gz;
 loopback -m diy ($diycore)/boot/grubfm/diy.gz;
+load_env -f ($diycore)/boot/grubfm/diy.cfg;
 configfile (diy)/diy
 
 
