@@ -11,7 +11,7 @@ terminal-font: "More Perfect DOS VGA 16"
 + animation {
   dir_name = "splash10"
   image_format = "jpg"
-  frame_number = 8
+  frame_number = 58
   size_ratio = 1
   play_once = disappear
   
