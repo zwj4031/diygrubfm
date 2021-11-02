@@ -25,6 +25,16 @@ if cmp ($updisk)/boot/grubfm/config (${ver})/boot/grubfm/config
    cp ($updisk)/boot/grubfm/config 2:/boot/grubfm/config
 fi;  
 
+
+if cmp ($updisk)/boot/grubfm/diy.cfg (${ver})/boot/grubfm/diy.cfg
+  then
+   echo "跳过更新diy.cfg配置文件.";
+   else
+   echo "正在更新diy.cfg配置文件...";
+   cp ($updisk)/boot/grubfm/diy.cfg 2:/boot/grubfm/diy.cfg
+fi;  
+
+
 if cmp ($updisk)/boot/grubfm/diy.gz (${ver})/boot/grubfm/diy.gz
   then
   echo "跳过更新diy核心文件.";
